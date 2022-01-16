@@ -5,6 +5,7 @@
         "illuminate/events": "^8.75",
         "illuminate/container": "^8.75",
         "illuminate/database": "^8.75",
-        "nesbot/carbon": "^2.55"
+        "nesbot/carbon": "^2.55",
+        "vlucas/phpdotenv": "^5.4"
     }
 }

@@ -116,7 +116,24 @@ function request_confirmation_email(){
  * Confirm email address
  */
 function confirm_email(){
-
+  $user = require_jwt();
+  if ($user === false){
+    http_response_code(401);
+    echo json_encode(['error' => 'UNAUTHORIZED']);
+  }
+  if (!$_POST['code']) {
+    http_response_code(401);
+    echo json_encode(['error' => 'INVALID_CODE']);
+  }
+  $verification_code = $_POST['code'];
+  $verification_hash = hash('sha256', $verification_code, false);
+  $result = DB::table('users')->where('id', $user['data']['id'])->where('verification_hash', $verification_hash)->first();
+  if (!$result) {
+    http_response_code(401);
+    echo json_encode(['error' => 'INVALID_CODE']);
+  } else {
+    echo json_encode(['status' => 'OK']);
+  }
 }
 
 switch ($action){
@@ -128,6 +145,9 @@ switch ($action){
     break;
   case 'REQUEST_CONFIRMATION_EMAIL':
     request_confirmation_email();
+    break;
+  case 'CONFIRM_EMAIL':
+    confirm_email();
     break;
   default:
     http_response_code(400);
