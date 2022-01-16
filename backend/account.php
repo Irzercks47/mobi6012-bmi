@@ -131,8 +131,10 @@ function confirm_email(){
   if (!$result) {
     http_response_code(401);
     echo json_encode(['error' => 'INVALID_CODE']);
+    return;
   } else {
     echo json_encode(['status' => 'OK']);
+    return;
   }
 }
 
