@@ -3,13 +3,9 @@
 require_once('utils.php');
 
 // GET current BMI list
-if (isset($_GET)){
+if ($_SERVER['REQUEST_METHOD'] === 'GET'){
   $user = require_jwt();
-  if (!$user){
-    http_response_code(401);
-    echo json_encode(['error' => 'UNAUTHORIZED']);
-    return;
-  }
+  if (!$user) return;
   
   $items = 15;
   if (isset($_GET['items']) && ctype_digit($_GET['items']) && intval($_GET['items']) > 0) $items = intval($_GET['items']);
@@ -21,18 +17,13 @@ if (isset($_GET)){
 
   $data = DB::table('reports')->skip($skip)->take($items)->where('user_id', $user['data']['id'])->orderBy('timestamp_created', 'DESC')->get();
 
-  for ($data in $report) $report->bmi = calculate_bmi($report->weight, $report->height);
+  foreach ($data as $report) $report->bmi = calculate_bmi($report->weight, $report->height);
 
   echo json_encode(['status' => 'OK', 'data' => $data]);
-}
-
-if (isset($_POST)){
+  return;
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   $user = require_jwt();
-  if (!$user){
-    http_response_code(401);
-    echo json_encode(['error' => 'UNAUTHORIZED']);
-    return;
-  }
+  if (!$user) return;
   if (!$_POST['height'] || !ctype_digit($_POST['height'])){
     http_response_code(400);
     echo json_encode(['error' => 'INVALID_HEIGHT']);

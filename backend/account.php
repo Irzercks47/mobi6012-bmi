@@ -73,8 +73,6 @@ function sign_up(){
 function log_in(){
   global $HTTP_HEADERS;
 
-  error_log(json_encode($HTTP_HEADERS));
-
   if (isset($HTTP_HEADERS['Authorization']) && str_starts_with($HTTP_HEADERS['Authorization'], 'Bearer ')){
     $token = substr($HTTP_HEADERS['Authorization'], 7);
     

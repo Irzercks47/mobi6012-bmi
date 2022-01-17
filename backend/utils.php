@@ -91,7 +91,7 @@ function password($password){
  */
 function require_jwt(){
   global $HTTP_HEADERS;
-  if (!isset($HTTP_HEADERS['Authorization']) || str_starts_with($HTTP_HEADERS['Authorization'], 'Bearer ')){
+  if (!isset($HTTP_HEADERS['Authorization']) || !str_starts_with($HTTP_HEADERS['Authorization'], 'Bearer ')){
     http_response_code(401);
     echo json_encode(['errorCode' => 'INVALID_JWT']);
     return false;
