@@ -10,8 +10,18 @@ if (isset($_GET)){
     echo json_encode(['error' => 'UNAUTHORIZED']);
     return;
   }
+  
+  $items = 15;
+  if (isset($_GET['items']) && ctype_digit($_GET['items']) && intval($_GET['items']) > 0) $items = intval($_GET['items']);
 
-  $data = DB::table('reports')->where('user_id', $user['data']['id'])->get();
+  $page = 1;
+  if (isset($_GET['page']) && ctype_digit($_GET['page']) && intval($_GET['page']) > 0) $items = intval($_GET['page']);
+
+  $skip = $items * ($page - 1)
+
+  $data = DB::table('reports')->skip($skip)->take($items)->where('user_id', $user['data']['id'])->orderBy('timestamp_created', 'DESC')->get();
+
+  for ($data as $report) $report->bmi = calculate_bmi($report->weight, $report->height);
 
   echo json_encode(['status' => 'OK', 'data' => $data]);
 }
@@ -37,6 +47,11 @@ if (isset($_POST)){
   $new_id = DB::table('reports')->insertGetId([
     'user_id' => $user['data']['id'],
     'height' => $_POST['height'],
-    'weight' => $_POST['weight'],
+    'weight' => $_POST['weight']
   ]);
+  $report = DB::table('reports')->where('id', $new_id)->first();
+  $report->bmi = calculate_bmi($report->weight, $report->height);
+  
+  echo json_encode(['status' => 'OK', 'data' => $report]);
+  return;
 }

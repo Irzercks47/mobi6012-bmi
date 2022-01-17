@@ -148,3 +148,14 @@ function validate_item($param, $data_type){
   
   return $validated;
 }
+
+/**
+ * Utility function to calculate the BMI index
+ * @param int $weight the user weight in hectograms
+ * @param int $height the user height in centimeters
+ */
+function calculate_bmi($weight, $height){
+  $weight = $weight / 10;
+  $height = $height / 100;
+  return ceil($weight / $height / $height * 10) / 10;
+}
