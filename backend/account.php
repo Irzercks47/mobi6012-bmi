@@ -49,6 +49,12 @@ function sign_up(){
   $email = $_POST['email'];
   $password = password($_POST['password']);
   
+  if (DB::table('users')->where('email', $email)){
+    http_response_code(409);
+    echo json_encode(['error' => 'USER_EXISTS']);
+    return;
+  }
+
   $user_id = DB::table('users')->insertGetId([
     'email' => $email,
     'name' => $name,

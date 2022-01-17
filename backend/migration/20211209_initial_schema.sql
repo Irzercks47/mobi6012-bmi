@@ -4,7 +4,7 @@ USE `bmi_app`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) UNIQUE NOT NULL,
   `password` varchar(255) NOT NULL,
   `timestamp_created` datetime NOT NULL DEFAULT (UTC_TIMESTAMP),
   `timestamp_updated` datetime NOT NULL DEFAULT (UTC_TIMESTAMP),

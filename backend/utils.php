@@ -82,7 +82,7 @@ function jwt_generate($user_id){
  */
 function password($password){
   global $BCRYPT_COST;
-  return password_hash(strtoupper($password), PASSWORD_BCRYPT, ['cost' => $BCRYPT_COST]);
+  return password_hash($password, PASSWORD_BCRYPT, ['cost' => $BCRYPT_COST]);
 }
 
 /**

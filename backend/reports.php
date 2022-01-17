@@ -17,11 +17,11 @@ if (isset($_GET)){
   $page = 1;
   if (isset($_GET['page']) && ctype_digit($_GET['page']) && intval($_GET['page']) > 0) $items = intval($_GET['page']);
 
-  $skip = $items * ($page - 1)
+  $skip = $items * ($page - 1);
 
   $data = DB::table('reports')->skip($skip)->take($items)->where('user_id', $user['data']['id'])->orderBy('timestamp_created', 'DESC')->get();
 
-  for ($data as $report) $report->bmi = calculate_bmi($report->weight, $report->height);
+  for ($data in $report) $report->bmi = calculate_bmi($report->weight, $report->height);
 
   echo json_encode(['status' => 'OK', 'data' => $data]);
 }
