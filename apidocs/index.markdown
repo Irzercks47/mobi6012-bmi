@@ -4,7 +4,7 @@ title: Main Page
 external_links:
   - title: Open App
     url: https://mobi6012-bmi.reinhart1010.id/
-    icon: bi bi-github
+    icon: bi bi-globe
     target: _blank
   - title: GitHub Repository
     url: https://github.com/reinhart1010/mobi6012-bmi/
