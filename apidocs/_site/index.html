@@ -85,7 +85,12 @@
 <p>This is the official documentation for our <a href="https://curriculum.binus.ac.id/course/MOBI6012/">MOBI6012 - Web Design</a> final project at <a href="https://binus.ac.id">BINUS University</a> by:</p>
 
 <ul>
+  <li>2301847373 - Reinhard Joshua Simanjuntak</li>
   <li>2301860053 - Reinhart Previano Koentjoro</li>
+  <li>2301870810 - Howard Tanner</li>
+  <li>2301888575 - Andhika Putra Permana</li>
+  <li>2301923016 - Achmad Machbuby</li>
+  <li>2301946505 - Muhammad Irza A. Diarifin</li>
 </ul>
 
 <p>This site is powered by <a href="https://ham.reinhart1010.id">HAM</a>, a Jekyll-based static wiki generator.</p>
@@ -227,7 +232,8 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h4 id="get-the-users-bmi-reports">Get the user’s BMI reports</h4>
+<h2 id="bmi-reports">BMI Reports</h2>
+<h3 id="get-the-users-bmi-reports">Get the user’s BMI reports</h3>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> GET https://api.mobi6012-bmi.reinhart1010.id/reports.php <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer ${TOKEN}'</span>
@@ -275,7 +281,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h4 id="add-a-new-bmi-report">Add a new BMI report</h4>
+<h3 id="add-a-new-bmi-report">Add a new BMI report</h3>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST https://api.mobi6012-bmi.reinhart1010.id/reports.php <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer ${TOKEN}'</span>

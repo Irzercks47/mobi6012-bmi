@@ -16,7 +16,12 @@ external_links:
 
 This is the official documentation for our [MOBI6012 - Web Design](https://curriculum.binus.ac.id/course/MOBI6012/) final project at [BINUS University](https://binus.ac.id) by:
 
++ 2301847373 - Reinhard Joshua Simanjuntak
 + 2301860053 - Reinhart Previano Koentjoro
++ 2301870810 - Howard Tanner
++ 2301888575 - Andhika Putra Permana
++ 2301923016 - Achmad Machbuby
++ 2301946505 - Muhammad Irza A. Diarifin
 
 This site is powered by [HAM](https://ham.reinhart1010.id), a Jekyll-based static wiki generator.
 
@@ -104,7 +109,8 @@ Body parameters are retrieved through `form-data`, which may consist of:
 }
 ```
 
-#### Get the user's BMI reports
+## BMI Reports
+### Get the user's BMI reports
 
 ```sh
 curl -X GET https://api.mobi6012-bmi.reinhart1010.id/reports.php \
@@ -137,7 +143,7 @@ Additionally, the endpoint also accepts the following parameters (set inside the
 }
 ```
 
-#### Add a new BMI report
+### Add a new BMI report
 
 ```sh
 curl -X POST https://api.mobi6012-bmi.reinhart1010.id/reports.php \
