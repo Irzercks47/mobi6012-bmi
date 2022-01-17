@@ -129,6 +129,7 @@ Additionally, the endpoint also accepts the following parameters (set inside the
       "user_id": 2,                               // The user ID
       "height": 165,                              // 165 cm (1.65 m)
       "weight": 555,                              // 55.5 kg
+      "bmi": 20.4,                                // Rounded up to 1 decimal place
       "timestamp_created": "2021-11-11 12:34:56", // In UTC and SQL format
       "timestamp_updated": "2021-11-11 12:34:56"  // In UTC and SQL format
     }
@@ -160,6 +161,7 @@ The endpoint requires the following parameters (set inside the `form-data`)
     "user_id": 2,                               // The user ID
     "height": 165,                              // 165 cm (1.65 m)
     "weight": 555,                              // 55.5 kg
+    "bmi": 20.4,                                // Rounded up to 1 decimal place
     "timestamp_created": "2021-11-11 12:34:56", // In UTC and SQL format
     "timestamp_updated": "2021-11-11 12:34:56"  // In UTC and SQL format
   }
