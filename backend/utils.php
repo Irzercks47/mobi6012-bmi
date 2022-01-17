@@ -67,7 +67,7 @@ function jwt_generate($user_id){
   // TODO: Insert JWT integration
   $payload = [
     'data' => json_decode(json_encode($user)),
-    'iss' => $_ENV['SERVER_URL'],
+    'iss' => $_ENV['APP_URL'],
     'iat' => time(),
     'exp' => time() + (30 * 24 * 60 * 60)
   ];
@@ -82,7 +82,7 @@ function jwt_generate($user_id){
  */
 function password($password){
   global $BCRYPT_COST;
-  password_hash(strtoupper($password), PASSWORD_BCRYPT, ['cost' => $BCRYPT_COST]);
+  return password_hash(strtoupper($password), PASSWORD_BCRYPT, ['cost' => $BCRYPT_COST]);
 }
 
 /**

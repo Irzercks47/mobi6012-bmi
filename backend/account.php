@@ -46,7 +46,7 @@ function generate_verification_email($user_id){
 function sign_up(){
   if (!(validate_item('name', 'STRING') && validate_item('email', 'EMAIL') && validate_item('password', 'STRING'))) return;
   $name = $_POST['name'];
-  $email = strtoupper($_POST['email']);
+  $email = $_POST['email'];
   $password = password($_POST['password']);
   
   $user_id = DB::table('users')->insertGetId([
