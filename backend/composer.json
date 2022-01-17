@@ -2,10 +2,11 @@
     "require": {
         "phpmailer/phpmailer": "^6.5",
         "firebase/php-jwt": "^5.5",
-        "illuminate/events": "^8.75",
-        "illuminate/container": "^8.75",
-        "illuminate/database": "^8.75",
+        "illuminate/events": "^8.79",
+        "illuminate/container": "^8.79",
+        "illuminate/database": "^8.79",
         "nesbot/carbon": "^2.55",
-        "vlucas/phpdotenv": "^5.4"
+        "vlucas/phpdotenv": "^5.4",
+        "illuminate/contracts": "^8.79"
     }
 }
