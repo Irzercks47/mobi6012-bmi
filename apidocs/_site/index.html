@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Favicon and title -->
+  <link rel="icon" href="https://raw.githubusercontent.com/googlefonts/noto-emoji/main/svg/emoji_u1f969.svg">
+  <title>Main Page - Your awesome title</title>
+
+  <!-- Halfmoon CSS -->
+  <link href="/assets/halfmoon-variables.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons CSS -->
+  <link href="/assets/bootstrap-icons.min.css" rel="stylesheet" />
+  
+  <!-- Core CSS required for HAM to work properly -->
+  <link href="/assets/default.css" rel="stylesheet" />
+
+  <!-- Additional CSS -->
+  <link href="/assets/main.css" rel="stylesheet" />
+  <link href="/assets/syntax-highlighter.css" rel="stylesheet" />
+
+</head>
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+  <div id="search" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <a href="#" class="close" role="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      <input id="search-input" type="text" class="form-control" placeholder="Keyword">
+      <ul id="results-container" class="my-10"></ul>
+      <span>Search articles on this site...</span>
+    </div>
+  </div>
+</div>
+  <div class="page-wrapper with-navbar with-sidebar">
+    <div class="sticky-alerts"></div>
+    <nav class="navbar">
+  <div class="navbar-content">
+    <button class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
+      <i class="bi bi-list" aria-hidden="true"></i>
+      <span class="sr-only">Toggle sidebar</span>
+    </button>
+  </div>
+  <a href="/" class="navbar-brand">
+    
+      <img src="https://raw.githubusercontent.com/googlefonts/noto-emoji/main/svg/emoji_u1f969.svg" alt="Your awesome title">
+    Your awesome title
+  </a>
+  
+    <span class="navbar-text d-none d-sm-block">The truly static, Git-based wiki project</span> <!-- text-monospace = font-family shifted to monospace -->
+  
+  <div class="ml-auto">
+    <button onClick="halfmoon.toggleDarkMode()" class="btn btn-action bg-dark-lm bg-white-dm text-white-lm text-dark-dm">
+      <i class="bi bi-moon-stars" aria-hidden="true"></i>
+      <span class="sr-only">Toggle Dark Mode</span>
+    </button>
+    <a href="#search" class="btn btn-action btn-primary">
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <span class="sr-only">Search</span>
+    </a>
+  </div>
+</nav>
+    <aside class="sidebar">
+  <div class="sidebar-menu">
+    <h5 id="on-this-page" class="sidebar-title">On This Page</h5>
+    <div class="sidebar-divider"></div>
+    <div id="_ham_on_this_page_ul"></div>
+    <br>
+    
+  </div>
+</aside>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <article class="row">
+  <div class="col-xl-8 p-20 collapse-group article-wrapper" id="_ham_content">
+    <h1 id="api-documentation-for-bmi-react-app-mobi6012-project">API Documentation for BMI React App (MOBI6012 project)</h1>
+
+<p>This is the official documentation for our <a href="https://curriculum.binus.ac.id/course/MOBI6012/">MOBI6012 - Web Design</a> final project at <a href="https://binus.ac.id">BINUS University</a> by:</p>
+
+<ul>
+  <li>2301860053 - Reinhart Previano Koentjoro</li>
+</ul>
+
+<p>This site is powered by <a href="https://ham.reinhart1010.id">HAM</a>, a Jekyll-based static wiki generator.</p>
+
+<h2 id="authentication">Authentication</h2>
+<p>While this app doesn’t implement all of the OAuth 2.0’s specifications, all authentication process are done through passing <a href="https://jwt.io">JSON Web Tokens (JWT)</a>.</p>
+
+<h3 id="creating-a-new-account-sign-up">Creating a new account (Sign Up)</h3>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST https://api.mobi6012-bmi.reinhart1010.id/account.php <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'action=SIGN_UP'</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'name=John Doe'</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'email=user@example.com'</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'password=secret'</span>
+</code></pre></div></div>
+
+<p>Body parameters are retrieved through <code class="language-plaintext highlighter-rouge">form-data</code>, which may consist of:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th style="text-align: center">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">action</code></td>
+      <td style="text-align: center">✅ (<strong>must</strong> be <code class="language-plaintext highlighter-rouge">SIGN_UP</code>)</td>
+      <td>Signals the endpoint that the user would like to sign up.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td style="text-align: center">✅</td>
+      <td>The user’s name.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">email</code></td>
+      <td style="text-align: center">✅</td>
+      <td>The user’s email address.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">password</code></td>
+      <td style="text-align: center">✅</td>
+      <td>The user’s password. While the application backend hashes the password through bcrypt, it is recommended to hash the password first for enhanced security.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Valid response code:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>   <span class="c1">// Must be "OK"</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">eyJ0...</span><span class="dl">"</span> <span class="c1">// The JWT payload</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="log-in-to-the-account">Log in to the account</h3>
+<h4 id="refresh-the-users-jwt">Refresh the user’s JWT</h4>
+<p>If a valid JWT is passed on to the endpoint, such as this:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST https://api.mobi6012-bmi.reinhart1010.id/account.php <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'action=LOG_IN'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer ${TOKEN}'</span>
+</code></pre></div></div>
+
+<p>The endpoint will generate a new JWT token to extend the user’s session time on the app.</p>
+
+<p>Body parameters are retrieved through <code class="language-plaintext highlighter-rouge">form-data</code>, which may consist of:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th style="text-align: center">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">action</code></td>
+      <td style="text-align: center">✅ (<strong>must</strong> be <code class="language-plaintext highlighter-rouge">LOG_IN</code>)</td>
+      <td>Signals the endpoint that the user would like to log in.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Valid response code:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>   <span class="c1">// Must be "OK"</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">eyJ0...</span><span class="dl">"</span> <span class="c1">// The JWT payload</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="log-in-with-email-and-password">Log in with email and password</h4>
+<p>Or else, the endpoint will try to authenticate a user through email and password.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST https://api.mobi6012-bmi.reinhart1010.id/account.php <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'action=LOG_IN'</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'email=user@example.com'</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="s1">'password=secret'</span>
+</code></pre></div></div>
+
+<p>Body parameters are retrieved through <code class="language-plaintext highlighter-rouge">form-data</code>, which may consist of:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th style="text-align: center">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">action</code></td>
+      <td style="text-align: center">✅ (<strong>must</strong> be <code class="language-plaintext highlighter-rouge">LOG_IN</code>)</td>
+      <td>Signals the endpoint that the user would like to log in.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">email</code></td>
+      <td style="text-align: center">✅</td>
+      <td>The user’s email address.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">password</code></td>
+      <td style="text-align: center">✅</td>
+      <td>The user’s password. While the application backend hashes the password through bcrypt, it is recommended to hash the password first for enhanced security.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Valid response code:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>   <span class="c1">// Must be "OK"</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">eyJ0...</span><span class="dl">"</span> <span class="c1">// The JWT payload</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="get-the-users-bmi-reports">Get the user’s BMI reports</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> GET https://api.mobi6012-bmi.reinhart1010.id/reports.php <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer ${TOKEN}'</span>
+</code></pre></div></div>
+
+<p>Additionally, the endpoint also accepts the following parameters (set inside the <code class="language-plaintext highlighter-rouge">form-data</code>)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th style="text-align: center">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">items</code></td>
+      <td style="text-align: center">🚫 (Defaults to <code class="language-plaintext highlighter-rouge">15</code>)</td>
+      <td>The number of items shown per page.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">page</code></td>
+      <td style="text-align: center">🚫 (Defaults to <code class="language-plaintext highlighter-rouge">1</code>)</td>
+      <td>The page number.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Valid response code:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>   <span class="c1">// Must be "OK"</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>                                    <span class="c1">// The report ID</span>
+      <span class="dl">"</span><span class="s2">user_id</span><span class="dl">"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>                               <span class="c1">// The user ID</span>
+      <span class="dl">"</span><span class="s2">height</span><span class="dl">"</span><span class="p">:</span> <span class="mi">165</span><span class="p">,</span>                              <span class="c1">// 165 cm (1.65 m)</span>
+      <span class="dl">"</span><span class="s2">weight</span><span class="dl">"</span><span class="p">:</span> <span class="mi">555</span><span class="p">,</span>                              <span class="c1">// 55.5 kg</span>
+      <span class="dl">"</span><span class="s2">timestamp_created</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-11-11 12:34:56</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// In UTC and SQL format</span>
+      <span class="dl">"</span><span class="s2">timestamp_updated</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-11-11 12:34:56</span><span class="dl">"</span>  <span class="c1">// In UTC and SQL format</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="add-a-new-bmi-report">Add a new BMI report</h4>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST https://api.mobi6012-bmi.reinhart1010.id/reports.php <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer ${TOKEN}'</span>
+</code></pre></div></div>
+
+<p>The endpoint requires the following parameters (set inside the <code class="language-plaintext highlighter-rouge">form-data</code>)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th style="text-align: center">Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">height</code></td>
+      <td style="text-align: center">✅</td>
+      <td>The user’s height in centimeters.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">weight</code></td>
+      <td style="text-align: center">✅</td>
+      <td>The user’s height in hectograms (1/10 kilograms). For example, <code class="language-plaintext highlighter-rouge">487</code> for 48.7 kilograms.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Valid response code:</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>   <span class="c1">// Must be "OK"</span>
+  <span class="dl">"</span><span class="s2">data</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>                                    <span class="c1">// The report ID</span>
+    <span class="dl">"</span><span class="s2">user_id</span><span class="dl">"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>                               <span class="c1">// The user ID</span>
+    <span class="dl">"</span><span class="s2">height</span><span class="dl">"</span><span class="p">:</span> <span class="mi">165</span><span class="p">,</span>                              <span class="c1">// 165 cm (1.65 m)</span>
+    <span class="dl">"</span><span class="s2">weight</span><span class="dl">"</span><span class="p">:</span> <span class="mi">555</span><span class="p">,</span>                              <span class="c1">// 55.5 kg</span>
+    <span class="dl">"</span><span class="s2">timestamp_created</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-11-11 12:34:56</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// In UTC and SQL format</span>
+    <span class="dl">"</span><span class="s2">timestamp_updated</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2021-11-11 12:34:56</span><span class="dl">"</span>  <span class="c1">// In UTC and SQL format</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </div>
+  <div class="col-xl-4 pt-xl-20 pb-20">
+    
+    
+    
+      <h5 id="external-links" class="sidebar-title">External Links</h5>
+      <div class="sidebar-divider"></div>
+      
+        <a href="https://mobi6012-bmi.reinhart1010.id/" class="sidebar-link sidebar-link-with-icon" target="_blank">
+  <span class="sidebar-icon">
+    <i class="bi bi-github" aria-hidden="true"></i>
+  </span>
+  Open App
+  <i class="bi bi-arrow-up-right-circle ml-5" aria-hidden="true"></i>
+</a>
+      
+        <a href="https://github.com/reinhart1010/mobi6012-bmi/" class="sidebar-link sidebar-link-with-icon" target="_blank">
+  <span class="sidebar-icon">
+    <i class="bi bi-github" aria-hidden="true"></i>
+  </span>
+  GitHub Repository
+  <i class="bi bi-arrow-up-right-circle ml-5" aria-hidden="true"></i>
+</a>
+      
+    
+    
+  </div>
+</div>
+
+<script src="https://unpkg.com/to-uri@1.0.4/lib/toURI.js"></script>
+<script src="/assets/entry-parser.js"></script>
+<script>
+  var siteName = '';
+  var siteTagline = '';
+  var disableTagline = '';
+  if (disableTagline.length > 0 && disableTagline == true) siteName = null;
+  parseRawEntry(document.getElementById('_ham_content'), document.getElementById('_ham_on_this_page_ul'), siteName, siteTagline);
+</script>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Simple Jekyll Search JS -->
+  <script src="/assets/simple-jekyll-search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/assets/search.json'
+    })
+  </script>
+  <!-- Halfmoon JS -->
+  <script src="/assets/halfmoon.min.js"></script>
+</body>
+</html>

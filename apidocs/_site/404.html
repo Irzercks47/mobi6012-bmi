@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Favicon and title -->
+  <link rel="icon" href="https://raw.githubusercontent.com/googlefonts/noto-emoji/main/svg/emoji_u1f969.svg">
+  <title> - Your awesome title</title>
+
+  <!-- Halfmoon CSS -->
+  <link href="/assets/halfmoon-variables.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons CSS -->
+  <link href="/assets/bootstrap-icons.min.css" rel="stylesheet" />
+  
+  <!-- Core CSS required for HAM to work properly -->
+  <link href="/assets/default.css" rel="stylesheet" />
+
+  <!-- Additional CSS -->
+  <link href="/assets/main.css" rel="stylesheet" />
+  <link href="/assets/syntax-highlighter.css" rel="stylesheet" />
+
+</head>
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+  <div id="search" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <a href="#" class="close" role="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      <input id="search-input" type="text" class="form-control" placeholder="Keyword">
+      <ul id="results-container" class="my-10"></ul>
+      <span>Search articles on this site...</span>
+    </div>
+  </div>
+</div>
+  <div class="page-wrapper with-navbar with-sidebar">
+    <div class="sticky-alerts"></div>
+    <nav class="navbar">
+  <div class="navbar-content">
+    <button class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
+      <i class="bi bi-list" aria-hidden="true"></i>
+      <span class="sr-only">Toggle sidebar</span>
+    </button>
+  </div>
+  <a href="/" class="navbar-brand">
+    
+      <img src="https://raw.githubusercontent.com/googlefonts/noto-emoji/main/svg/emoji_u1f969.svg" alt="Your awesome title">
+    Your awesome title
+  </a>
+  
+    <span class="navbar-text d-none d-sm-block">The truly static, Git-based wiki project</span> <!-- text-monospace = font-family shifted to monospace -->
+  
+  <div class="ml-auto">
+    <button onClick="halfmoon.toggleDarkMode()" class="btn btn-action bg-dark-lm bg-white-dm text-white-lm text-dark-dm">
+      <i class="bi bi-moon-stars" aria-hidden="true"></i>
+      <span class="sr-only">Toggle Dark Mode</span>
+    </button>
+    <a href="#search" class="btn btn-action btn-primary">
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <span class="sr-only">Search</span>
+    </a>
+  </div>
+</nav>
+    <aside class="sidebar">
+  <div class="sidebar-menu">
+    <h5 id="on-this-page" class="sidebar-title">On This Page</h5>
+    <div class="sidebar-divider"></div>
+    <div id="_ham_on_this_page_ul"></div>
+    <br>
+    
+  </div>
+</aside>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <style type="text/css" media="screen">
+  .container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  h1 {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+</style>
+
+<div class="container">
+  <h1>404</h1>
+
+  <p><strong>Page not found :(</strong></p>
+  <p>The requested page could not be found.</p>
+</div>
+
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Simple Jekyll Search JS -->
+  <script src="/assets/simple-jekyll-search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/assets/search.json'
+    })
+  </script>
+  <!-- Halfmoon JS -->
+  <script src="/assets/halfmoon.min.js"></script>
+</body>
+</html>

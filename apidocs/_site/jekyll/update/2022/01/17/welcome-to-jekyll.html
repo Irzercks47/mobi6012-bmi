@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Favicon and title -->
+  <link rel="icon" href="https://raw.githubusercontent.com/googlefonts/noto-emoji/main/svg/emoji_u1f969.svg">
+  <title>Welcome to Jekyll! - Your awesome title</title>
+
+  <!-- Halfmoon CSS -->
+  <link href="/assets/halfmoon-variables.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons CSS -->
+  <link href="/assets/bootstrap-icons.min.css" rel="stylesheet" />
+  
+  <!-- Core CSS required for HAM to work properly -->
+  <link href="/assets/default.css" rel="stylesheet" />
+
+  <!-- Additional CSS -->
+  <link href="/assets/main.css" rel="stylesheet" />
+  <link href="/assets/syntax-highlighter.css" rel="stylesheet" />
+
+</head>
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+  <div id="search" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <a href="#" class="close" role="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      <input id="search-input" type="text" class="form-control" placeholder="Keyword">
+      <ul id="results-container" class="my-10"></ul>
+      <span>Search articles on this site...</span>
+    </div>
+  </div>
+</div>
+  <div class="page-wrapper with-navbar with-sidebar">
+    <div class="sticky-alerts"></div>
+    <nav class="navbar">
+  <div class="navbar-content">
+    <button class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
+      <i class="bi bi-list" aria-hidden="true"></i>
+      <span class="sr-only">Toggle sidebar</span>
+    </button>
+  </div>
+  <a href="/" class="navbar-brand">
+    
+      <img src="https://raw.githubusercontent.com/googlefonts/noto-emoji/main/svg/emoji_u1f969.svg" alt="Your awesome title">
+    Your awesome title
+  </a>
+  
+    <span class="navbar-text d-none d-sm-block">The truly static, Git-based wiki project</span> <!-- text-monospace = font-family shifted to monospace -->
+  
+  <div class="ml-auto">
+    <button onClick="halfmoon.toggleDarkMode()" class="btn btn-action bg-dark-lm bg-white-dm text-white-lm text-dark-dm">
+      <i class="bi bi-moon-stars" aria-hidden="true"></i>
+      <span class="sr-only">Toggle Dark Mode</span>
+    </button>
+    <a href="#search" class="btn btn-action btn-primary">
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <span class="sr-only">Search</span>
+    </a>
+  </div>
+</nav>
+    <aside class="sidebar">
+  <div class="sidebar-menu">
+    <h5 id="on-this-page" class="sidebar-title">On This Page</h5>
+    <div class="sidebar-divider"></div>
+    <div id="_ham_on_this_page_ul"></div>
+    <br>
+    
+  </div>
+</aside>
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <article class="row">
+  <div class="col-xl-8 p-20 collapse-group article-wrapper" id="_ham_content">
+    <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>Jekyll requires blog post files to be named according to the following format:</p>
+
+<p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
+
+<p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+
+
+
+  </div>
+  <div class="col-xl-4 pt-xl-20 pb-20">
+    
+    
+    
+    
+  </div>
+</div>
+
+<script src="https://unpkg.com/to-uri@1.0.4/lib/toURI.js"></script>
+<script src="/assets/entry-parser.js"></script>
+<script>
+  var siteName = '';
+  var siteTagline = '';
+  var disableTagline = '';
+  if (disableTagline.length > 0 && disableTagline == true) siteName = null;
+  parseRawEntry(document.getElementById('_ham_content'), document.getElementById('_ham_on_this_page_ul'), siteName, siteTagline);
+</script>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- Simple Jekyll Search JS -->
+  <script src="/assets/simple-jekyll-search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/assets/search.json'
+    })
+  </script>
+  <!-- Halfmoon JS -->
+  <script src="/assets/halfmoon.min.js"></script>
+</body>
+</html>
