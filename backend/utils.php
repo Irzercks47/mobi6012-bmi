@@ -51,7 +51,7 @@ function initialize_smtp(){
  * @throws ExpiredException Provided JWT has since expired, as defined by the 'exp' claim
  */
 function jwt_decode($token){
-  return json_decode(json_encode(JWT::decode($token, new Key($_ENV['JWT_SECRET_TOKEN'], 'HS256'))));
+  return json_decode(json_encode(JWT::decode($token, new Key($_ENV['JWT_SECRET_TOKEN'], 'HS256'))), true);
 }
 
 /**
@@ -66,7 +66,7 @@ function jwt_generate($user_id){
 
   // TODO: Insert JWT integration
   $payload = [
-    'data' => json_decode(json_encode($user)),
+    'data' => json_decode(json_encode($user), true),
     'iss' => $_ENV['APP_URL'],
     'iat' => time(),
     'exp' => time() + (30 * 24 * 60 * 60)

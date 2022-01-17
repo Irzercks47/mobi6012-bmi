@@ -49,7 +49,7 @@ function sign_up(){
   $email = $_POST['email'];
   $password = password($_POST['password']);
   
-  if (DB::table('users')->where('email', $email)){
+  if (DB::table('users')->where('email', $email)->first()){
     http_response_code(409);
     echo json_encode(['error' => 'USER_EXISTS']);
     return;
@@ -73,25 +73,34 @@ function sign_up(){
 function log_in(){
   global $HTTP_HEADERS;
 
+  error_log(json_encode($HTTP_HEADERS));
+
   if (isset($HTTP_HEADERS['Authorization']) && str_starts_with($HTTP_HEADERS['Authorization'], 'Bearer ')){
     $token = substr($HTTP_HEADERS['Authorization'], 7);
+    
     try {
       $data = jwt_decode($token);
-      $user = DB::table('users')->where('id', $data['data']['id']);
+      $user = DB::table('users')->where('id', $data['data']['id'])->first();
       if (!$user){
         http_response_code(401);
         echo json_encode(['error' => 'UNAUTHORIZED']);
         return;
       }
+      
+      echo json_encode([
+        'status' => 'OK',
+        'data' => jwt_generate($user->id)
+      ]);
+      return;
     } catch (Exception $pass){}
   }
 
   if (!(validate_item('email', 'EMAIL') && validate_item('password', 'STRING'))) return;
   $email = strtoupper($_POST['email']);
-  $password = password($_POST['password']);
+  $password = $_POST['password'];
 
-  $user = DB::table('users')->where('email', $email)->where('password', $password)->first();
-  if (!$user){
+  $user = DB::table('users')->where('email', $email)->first();
+  if (!$user || !password_verify($password, $user->password)){
     http_response_code(401);
     echo json_encode(['error' => 'UNAUTHORIZED']);
     return;
@@ -101,6 +110,7 @@ function log_in(){
     'status' => 'OK',
     'data' => jwt_generate($user->id)
   ]);
+  return;
 }
 
 /**
