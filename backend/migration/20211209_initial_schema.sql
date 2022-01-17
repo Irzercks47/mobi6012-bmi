@@ -1,8 +1,8 @@
-CREATE DATABASE `bmi_app` IF NOT EXISTS;
+CREATE DATABASE IF NOT EXISTS `bmi_app`;
 USE `bmi_app`;
 
-CREATE TABLE `users` IF NOT EXISTS (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `timestamp_created` datetime NOT NULL DEFAULT (UTC_TIMESTAMP),
@@ -14,8 +14,8 @@ CREATE TABLE `users` IF NOT EXISTS (
   `password_recovery_deadline` datetime
 );
 
-CREATE TABLE `reports` IF NOT EXISTS (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `reports` (
+  `id` bigint unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL,
   `height` smallint unsigned NOT NULL,
   `weight` smallint unsigned NOT NULL,
