@@ -39,5 +39,4 @@ if (isset($_POST)){
     'height' => $_POST['height'],
     'weight' => $_POST['weight'],
   ]);
-
 }

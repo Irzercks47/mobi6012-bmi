@@ -25,8 +25,8 @@ function generate_verification_email($user_id){
   for ($i = 0; $i < 8; $i++) $verification_code .= random_int(0, 9);
 
   $mail->addAddress($user->email, $user->name);
-  $mail->Subject = 'Verify your email for ' . getenv('APP_NAME');
-  $mail->Body = 'Your email verification code is ' . $verification_code . '.\n\nPlease confirm the code at ' . (getenv('APP_URL') | 'http://localhost:8000') . '.';
+  $mail->Subject = 'Verify your email for ' . $_ENV['APP_NAME'];
+  $mail->Body = 'Your email verification code is ' . $verification_code . '.\n\nPlease confirm the code at ' . ($_ENV['APP_URL'] | 'http://localhost:8000') . '.';
   try {
     $mail->send();
     $verification_hash = hash('sha256', $verification_code, false);

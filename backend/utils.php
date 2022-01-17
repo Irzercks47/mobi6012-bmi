@@ -22,17 +22,17 @@ $REGEX_EMAIL = '/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}
  */
 function initialize_smtp(){
   // Setup PHPMailer
-  $mail = (getenv('SMTP_ENABLED') == true) ? new PHPMailer\PHPMailer(true) : false;
+  $mail = ($_ENV['SMTP_ENABLED'] == true) ? new PHPMailer\PHPMailer(true) : false;
   try {
     $mail->isSMTP();
-    $mail->Host = getenv('SMTP_HOST');
-    $mail->Port = intval(getenv('SMTP_PORT'));
+    $mail->Host = $_ENV['SMTP_HOST'];
+    $mail->Port = intval($_ENV['SMTP_PORT']);
     $mail->SMTPAuth = true;
-    $mail->Host = getenv('SMTP_HOST');
-    $mail->Username = getenv('SMTP_USERNAME');
-    $mail->Password = getenv('SMTP_PASSWORD');
+    $mail->Host = $_ENV['SMTP_HOST'];
+    $mail->Username = $_ENV['SMTP_USERNAME'];
+    $mail->Password = $_ENV['SMTP_PASSWORD'];
     $mail->SMTPSecure = PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
-    $mail->setFrom(getenv('SMTP_USERNAME'), getenv('SMTP_SENDER_NAME'));
+    $mail->setFrom($_ENV['SMTP_USERNAME'], $_ENV['SMTP_SENDER_NAME']);
   } catch (PHPMailerException $e){
     $mail = false;
   }
@@ -51,7 +51,7 @@ function initialize_smtp(){
  * @throws ExpiredException Provided JWT has since expired, as defined by the 'exp' claim
  */
 function jwt_decode($token){
-  return json_decode(json_encode(JWT::decode($token, new Key(getenv('JWT_SECRET_TOKEN'), 'HS256'))));
+  return json_decode(json_encode(JWT::decode($token, new Key($_ENV['JWT_SECRET_TOKEN'], 'HS256'))));
 }
 
 /**
@@ -67,12 +67,12 @@ function jwt_generate($user_id){
   // TODO: Insert JWT integration
   $payload = [
     'data' => json_decode(json_encode($user)),
-    'iss' => getenv('SERVER_URL'),
+    'iss' => $_ENV['SERVER_URL'],
     'iat' => time(),
     'exp' => time() + (30 * 24 * 60 * 60)
   ];
 
-  return JWT::encode($payload, getenv('JWT_SECRET_TOKEN'), 'HS256');  
+  return JWT::encode($payload, $_ENV['JWT_SECRET_TOKEN'], 'HS256');  
 }
 
 /**
